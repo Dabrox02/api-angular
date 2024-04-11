@@ -5,7 +5,7 @@
         <div class="col">
             <div class="card h-100">
                 <div class="card-body">
-                    <h5 class="card-title">{{publicacion.userId}}</h5>
+                    <h5 class="card-title">{{getUsuarioPorId(publicacion.userId)?.name}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{publicacion.title}}</h6>
                     <p class="card-text">{{publicacion.body}}
                 </div>

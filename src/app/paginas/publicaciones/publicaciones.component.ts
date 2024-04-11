@@ -23,9 +23,10 @@ export class PublicacionesComponent implements OnInit {  // Implementacion de in
   ngOnInit(): void {  
     // Dentro de ngOnInit se llama al método getPublicaciones para obtener los datos al iniciar el componente
     this.getPublicaciones();  
+    this.getUsuarios();
   }
 
-  getPublicaciones() {
+  getPublicaciones():void {
     this.consumoApiService.getData("posts")  // Se llama al método getData del servicio ConsumoApiService
       .subscribe({  // El método getData devuelve un Observable, por lo que se utiliza subscribe para manejar la respuesta
         next: (res) => { 
@@ -39,8 +40,8 @@ export class PublicacionesComponent implements OnInit {  // Implementacion de in
       });
   }
 
-  getUsuarioPorId(userId: number) {
-    this.consumoApiService.getData(`users/${userId}`)  // Se llama al método getData del servicio ConsumoApiService
+  getUsuarios(): void {
+    this.consumoApiService.getData(`users`)  // Se llama al método getData del servicio ConsumoApiService
       .subscribe({  // El método getData devuelve un Observable, por lo que se utiliza subscribe para manejar la respuesta
         next: (res) => { 
           // Se actualizan los usuarios almacenando la respuesta (res) en la propiedad publicaciones
@@ -51,5 +52,9 @@ export class PublicacionesComponent implements OnInit {  // Implementacion de in
           console.log(err);
         }
       });
+  }
+
+  getUsuarioPorId(userId: number): Usuario | undefined {
+    return this.usuarios.find((user) => user.id === userId);
   }
 }
