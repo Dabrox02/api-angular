@@ -1,16 +1,33 @@
+<!-- Inicio del contenedor principal -->
 <div class="container py-4">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        <!-- Esta línea itera sobre una colección de elementos llamada publicaciones y usa la variable publicacion para representar cada elemento individual. La expresión track publicacion.id se utiliza para rastrear la identidad de cada elemento. -->
-        @for (publicacion of publicaciones; track publicacion.id) {
-        <div class="col">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">{{getUsuarioPorId(publicacion.userId)?.name}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{publicacion.title}}</h6>
-                    <p class="card-text">{{publicacion.body}}
-                </div>
-            </div>
+    <div>
+        <!-- Grupo de entrada para buscar publicaciones -->
+        <div class="input-group mb-4">
+            <span class="input-group-text">Buscar Publicacion</span>
+            <input #inputBuscado type="text" class="form-control">
+            <input type="button" class="btn btn-primary" value="Buscar Publicacion" (click)="buscarTexto(inputBuscado)">
         </div>
+        <!-- Sección para mostrar los resultados de la búsqueda -->
+        <div>
+            <!-- Comienza la condición para mostrar los resultados de la búsqueda -->
+            @if (textoBuscado.trim() !== "" ) {
+            <p><strong>Resultados buscados para:</strong> {{textoBuscado}}</p>
+            }
+            <!-- Finaliza la condición para mostrar los resultados de la búsqueda -->
+        </div>
+    </div>
+
+    <!-- Contenedor de las publicaciones -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Itera sobre un listado de publicaciones -->
+        @for (publicacion of publicaciones; track publicacion.id) {
+        <!-- Se aplica @input para inyectar datos en el componente hijo -->
+        @if (textoBuscado === "" || publicacion.body.toLowerCase().includes(textoBuscado) ||
+        publicacion.title.toLowerCase().includes(textoBuscado)) {
+        <app-publicacion [publicacion]="publicacion" [usuario]="getUsuarioPorId(publicacion.userId)"></app-publicacion>
         }
+        }
+        <!-- Finaliza el bucle para mostrar las publicaciones -->
     </div>
 </div>
+<!-- Fin del contenedor principal -->
