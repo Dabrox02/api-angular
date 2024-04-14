@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ConsumoApiService } from '../../servicios/consumo-api.service';
 import { Publicacion } from '../../interfaces/publicacion.interface';
-import { Usuario } from '../../interfaces/usuario';
+import { Usuario } from '../../interfaces/usuario.interface';
 import { PublicacionComponent } from "./publicacion/publicacion.component";
 
 @Component({

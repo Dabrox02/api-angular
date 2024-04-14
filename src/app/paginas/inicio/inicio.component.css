@@ -1,0 +1,9 @@
+.title-container {
+    display: flex;
+    justify-content: center;
+}
+
+.title-container h1 {
+    font-weight: bolder;
+    letter-spacing: 4px;
+}

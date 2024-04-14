@@ -15,7 +15,7 @@ export class InicioComponent implements OnInit {
   constructor(private pexelApiService: PexelApiService) { }
 
   ngOnInit(): void {
-    // this.getImagenes("people");
+    this.getImagenes("people");
   }
 
   getImagenes(query: string): void {
