@@ -26,7 +26,6 @@ export class NosotrosComponent implements OnInit {
           res.media.forEach((photo: Personas) => {
             this.personas.push(photo);
           });
-          console.log(this.personas);
         },
         error: (err) => {
           console.log(err);

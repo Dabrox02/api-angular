@@ -24,7 +24,6 @@ export class InicioComponent implements OnInit {
         next: (res) => {
           // Se actualizan las imagenes almacenando la respuesta (res) en la propiedad imagenes
           this.imagenes = res.photos;
-          console.log(this.imagenes);
         },
         error: (err) => {
           // La función error se ejecuta si ocurre un error al obtener los datos (err)
